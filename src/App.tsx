@@ -1,58 +1,30 @@
 import React from 'react';
-import logo from './logo.svg';
-import { Counter } from './features/counter/Counter';
+import {Route, Routes} from 'react-router-dom';
 import './App.css';
+import PlanetsContainer from "./components/Planets/PlanetsContainer";
+import {PATH} from "./Utils/path/Path";
+import {FilmsContainer} from "./components/Films/FilmsContainer";
+import StarshipsContainer from "./components/Starships/StarshipsContainer";
+import VehiclesContainer from "./components/Vehicles/VehiclesContainer";
+import SpeciesContainer from "./components/Species/SpeciesContainer";
+import PeoplesContainer from "./components/Peoples/PeoplesContainer";
+import NavigationBar from "./features/NavigationBar/NavigationBar";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <Counter />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <span>
-          <span>Learn </span>
-          <a
-            className="App-link"
-            href="https://reactjs.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux-toolkit.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux Toolkit
-          </a>
-          ,<span> and </span>
-          <a
-            className="App-link"
-            href="https://react-redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React Redux
-          </a>
-        </span>
-      </header>
-    </div>
-  );
+
+    return (
+        <div className="App">
+            <NavigationBar/>
+            <Routes>
+                <Route path={PATH.PEOPLES} element={<PeoplesContainer/>} />
+                <Route path={PATH.FILMS} element={<FilmsContainer/>} />
+                <Route path={PATH.STARSHIPS} element={<StarshipsContainer/>} />
+                <Route path={PATH.VEHICLES} element={<VehiclesContainer/>} />
+                <Route path={PATH.SPECIES} element={<SpeciesContainer/>} />
+                <Route path={PATH.PLANETS} element={<PlanetsContainer/>} />
+            </Routes>
+        </div>
+    );
 }
 
 export default App;
