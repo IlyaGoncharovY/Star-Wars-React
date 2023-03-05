@@ -1,9 +1,15 @@
-import React from 'react';
+import React, {FC} from 'react';
+import {IStarships} from "../../../types/IStarships";
 
-const StarshipsItem = () => {
+interface StarshipsItemType {
+    starships: IStarships
+}
+
+const StarshipsItem: FC<StarshipsItemType> = ({starships}) => {
     return (
         <div>
-            StarshipsItem
+            {starships.name}
+            <button>Reed More</button>
         </div>
     );
 };
