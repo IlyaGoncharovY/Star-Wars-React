@@ -1,9 +1,15 @@
-import React from 'react';
+import React, {FC} from 'react';
+import {ISpecies} from "../../../types/ISpecies";
 
-const SpeciesItem = () => {
+interface SpeciesItemType {
+    species: ISpecies
+}
+
+const SpeciesItem: FC<SpeciesItemType> = ({species}) => {
     return (
         <div>
-            SpeciesItem
+            {species.name}
+            <button>Reed More</button>
         </div>
     );
 };
