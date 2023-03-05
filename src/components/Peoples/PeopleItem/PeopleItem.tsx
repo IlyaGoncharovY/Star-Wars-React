@@ -1,9 +1,15 @@
-import React from 'react';
+import React, {FC} from 'react';
+import {IPeople} from "../../../types/IPeople";
 
-const PeopleItem = () => {
+interface PeopleItemType {
+    people: IPeople
+}
+
+const PeopleItem: FC <PeopleItemType> = ({people}) => {
     return (
         <div>
-            PeopleItem
+            {people.name}
+            <button>Reed More</button>
         </div>
     );
 };
