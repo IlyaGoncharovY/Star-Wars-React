@@ -1,9 +1,15 @@
-import React from 'react';
+import React, {FC} from 'react';
+import {IFilms} from "../../../types/IFilms";
 
-export const FilmItem = () => {
+interface FilmItemType {
+    films: IFilms
+}
+
+export const FilmItem: FC<FilmItemType> = ({films}) => {
     return (
         <div>
-            FilmItem
+            {films.title}
+            <button>Reed More</button>
         </div>
     );
 };
