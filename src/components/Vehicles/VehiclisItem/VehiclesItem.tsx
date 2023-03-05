@@ -1,9 +1,15 @@
-import React from 'react';
+import React, {FC} from 'react';
+import {IVehicles} from "../../../types/IVehicles";
 
-const VehiclesItem = () => {
+interface VehiclesItemType {
+    vehicles: IVehicles
+}
+
+const VehiclesItem: FC<VehiclesItemType> = ({vehicles}) => {
     return (
         <div>
-            VehiclesItem
+            {vehicles.name}
+            <button>Reed More</button>
         </div>
     );
 };
