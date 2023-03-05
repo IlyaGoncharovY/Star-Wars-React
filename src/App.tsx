@@ -9,6 +9,8 @@ import VehiclesContainer from "./components/Vehicles/VehiclesContainer";
 import SpeciesContainer from "./components/Species/SpeciesContainer";
 import PeoplesContainer from "./components/Peoples/PeoplesContainer";
 import NavigationBar from "./features/NavigationBar/NavigationBar";
+import HomePage from "./components/Home/HomePage";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
 
@@ -16,6 +18,7 @@ function App() {
         <div className="App">
             <NavigationBar/>
             <Routes>
+                <Route path={PATH.MAIN} element={<HomePage/>} />
                 <Route path={PATH.PEOPLES} element={<PeoplesContainer/>} />
                 <Route path={PATH.FILMS} element={<FilmsContainer/>} />
                 <Route path={PATH.STARSHIPS} element={<StarshipsContainer/>} />
