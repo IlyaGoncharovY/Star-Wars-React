@@ -1,15 +1,27 @@
-import React, {FC} from 'react';
-import {IPlanet} from "../../../models/IPlanet";
+import React, {FC, useState} from 'react';
+import {IPlanet} from "../../../types/IPlanet";
+import PlanetModal from "../../../common/ModalWindow/PlanetModal";
 
 interface PlanetItemType {
     planet: IPlanet
 }
 
 const PlanetItem: FC<PlanetItemType> = ({planet}) => {
+
+    let [openModal, setOpenModal] = useState<boolean>(false)
+
+    const openModalHandler = () => setOpenModal(true)
+    const closeModalHandler = () => setOpenModal(false)
+
     return (
         <div>
-            {planet.name}. {planet.diameter}
-            <button>Reed More</button>
+            {planet.name}
+            <button onClick={openModalHandler}>Reed More</button>
+            <PlanetModal
+                open={openModal}
+                closeHandler={closeModalHandler}
+                planet={planet}
+            />
         </div>
     );
 };

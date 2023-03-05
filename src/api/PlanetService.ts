@@ -1,23 +1,23 @@
 import {createApi, fetchBaseQuery} from "@reduxjs/toolkit/query/react";
-import {IPlanet} from "../models/IPlanet";
+import {IPlanet} from "../types/IPlanet";
 
-type BaseType<T = {}> = {
+type BaseSWType<T = {}> = {
     count: number
     next: string
     previous: null
     results: T
 }
-export const starWarsApi = createApi({
-    reducerPath: "starWarsApi",
+export const planetAPI = createApi({
+    reducerPath: "starWarsApiPlanet",
     baseQuery: fetchBaseQuery({
         baseUrl: "https://swapi.py4e.com/api/"
     }),
     endpoints: (build) => ({
-        fetchDataSW: build.query<BaseType<IPlanet[]>, number>({
-            query: (id: number = 1) => ({
-                url: "planets/",
+        getPlanet: build.query<BaseSWType<IPlanet[]>, number>({
+            query: (page) => ({
+                url: `planets/`,
                 params: {
-                    id: id
+                    page: page
                 }
             })
         })
