@@ -1,6 +1,7 @@
 import React from 'react';
 import {FilmItem} from "./FilmsItem/FilmItem";
 import {filmsAPI} from "../../api/FilmsService";
+import LoadingAndErrorUtils from "../../common/loadingAndError/LoadingAndErrorUtils";
 
 
 export const FilmsContainer = () => {
@@ -9,8 +10,7 @@ export const FilmsContainer = () => {
 
     return (
         <div>
-            {isLoading && <h1>...Loading</h1>}
-            {error && <h1>Error =( </h1>}
+            <LoadingAndErrorUtils error={error} isLoading={isLoading}/>
 
             {films && films.results.map((films, index) =>
                 <FilmItem key={index} films={films}/>)}

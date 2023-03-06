@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import {peopleAPI} from "../../api/PeopleService";
 import PeopleItem from "./PeopleItem/PeopleItem";
+import LoadingAndErrorUtils from "../../common/loadingAndError/LoadingAndErrorUtils";
 
 const PeoplesContainer = () => {
 
@@ -21,8 +22,7 @@ const PeoplesContainer = () => {
 
     return (
         <div>
-            {isLoading && <h1>...Loading</h1>}
-            {error && <h1>Error =( </h1>}
+            <LoadingAndErrorUtils error={error} isLoading={isLoading}/>
 
             <button onClick={clickPrevPage} disabled={nextPage === minPage}>PREV</button>
             <button onClick={clickNextPage} disabled={nextPage === maxPage}>NEXT</button>

@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import {planetAPI} from "../../api/PlanetService";
 import PlanetItem from "./PlanetItem/PlanetItem";
+import LoadingAndErrorUtils from "../../common/loadingAndError/LoadingAndErrorUtils";
 
 
 const PlanetsContainer = () => {
@@ -23,8 +24,7 @@ const PlanetsContainer = () => {
     return (
         <div>
 
-            {isLoading && <h1>...Loading</h1>}
-            {error && <h1>Error =( </h1>}
+            <LoadingAndErrorUtils error={error} isLoading={isLoading}/>
 
             <button onClick={clickPrevPage} disabled={nextPage === minPage}>PREV</button>
             <button onClick={clickNextPage} disabled={nextPage >= maxPage}>NEXT</button>

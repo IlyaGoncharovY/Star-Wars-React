@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import {starshipsAPI} from "../../api/StarshipsService";
 import StarshipsItem from "./StarshipsItem/StarshipsItem";
+import LoadingAndErrorUtils from "../../common/loadingAndError/LoadingAndErrorUtils";
 
 const StarshipsContainer = () => {
     let [nextPage, setNextPage] = useState<number>(1)
@@ -20,8 +21,7 @@ const StarshipsContainer = () => {
 
     return (
         <div>
-            {isLoading && <h1>...Loading</h1>}
-            {error && <h1>Error =( </h1>}
+            <LoadingAndErrorUtils error={error} isLoading={isLoading}/>
 
             <button onClick={clickPrevPage} disabled={nextPage === minPage}>PREV</button>
             <button onClick={clickNextPage} disabled={nextPage === maxPage}>NEXT</button>
