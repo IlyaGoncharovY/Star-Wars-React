@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import {planetAPI} from "../../api/PlanetService";
 import PlanetItem from "./PlanetItem/PlanetItem";
 import LoadingAndErrorUtils from "../../common/loadingAndError/LoadingAndErrorUtils";
+import ButtonsSwitching from "../../common/ButtonsSwitching/ButtonsSwitching";
 
 
 const PlanetsContainer = () => {
@@ -26,8 +27,11 @@ const PlanetsContainer = () => {
 
             <LoadingAndErrorUtils error={error} isLoading={isLoading}/>
 
-            <button onClick={clickPrevPage} disabled={nextPage === minPage}>PREV</button>
-            <button onClick={clickNextPage} disabled={nextPage >= maxPage}>NEXT</button>
+            <ButtonsSwitching clickPrevPage={clickPrevPage}
+                              clickNextPage={clickNextPage}
+                              nextPage={nextPage}
+                              minPage={minPage}
+                              maxPage={maxPage}/>
 
             {planets && planets.results.map((planet, index) => <PlanetItem key={index} planet={planet}/>)}
 

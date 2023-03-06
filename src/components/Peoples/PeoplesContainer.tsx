@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import {peopleAPI} from "../../api/PeopleService";
 import PeopleItem from "./PeopleItem/PeopleItem";
 import LoadingAndErrorUtils from "../../common/loadingAndError/LoadingAndErrorUtils";
+import ButtonsSwitching from "../../common/ButtonsSwitching/ButtonsSwitching";
 
 const PeoplesContainer = () => {
 
@@ -24,8 +25,11 @@ const PeoplesContainer = () => {
         <div>
             <LoadingAndErrorUtils error={error} isLoading={isLoading}/>
 
-            <button onClick={clickPrevPage} disabled={nextPage === minPage}>PREV</button>
-            <button onClick={clickNextPage} disabled={nextPage === maxPage}>NEXT</button>
+            <ButtonsSwitching clickPrevPage={clickPrevPage}
+                              clickNextPage={clickNextPage}
+                              nextPage={nextPage}
+                              minPage={minPage}
+                              maxPage={maxPage}/>
 
             {peoples && peoples.results.map((people, index) =>
                 <PeopleItem key={index} people={people}/>)}

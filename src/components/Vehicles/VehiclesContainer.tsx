@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import VehiclesItem from "./VehiclisItem/VehiclesItem";
 import {vehiclesAPI} from "../../api/VehiclesService";
 import LoadingAndErrorUtils from "../../common/loadingAndError/LoadingAndErrorUtils";
+import ButtonsSwitching from "../../common/ButtonsSwitching/ButtonsSwitching";
 
 const VehiclesContainer = () => {
     let [nextPage, setNextPage] = useState<number>(1)
@@ -25,8 +26,12 @@ const VehiclesContainer = () => {
 
             <LoadingAndErrorUtils error={error} isLoading={isLoading}/>
 
-            <button onClick={clickPrevPage} disabled={nextPage === minPage}>PREV</button>
-            <button onClick={clickNextPage} disabled={nextPage >= maxPage}>NEXT</button>
+            <ButtonsSwitching clickPrevPage={clickPrevPage}
+                              clickNextPage={clickNextPage}
+                              nextPage={nextPage}
+                              minPage={minPage}
+                              maxPage={maxPage}/>
+
 
             {vehicles && vehicles.results.map((vehicles, index) => <VehiclesItem key={index} vehicles={vehicles}/>)}
 

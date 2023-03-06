@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import SpeciesItem from "./SpeciesItem/SpeciesItem";
 import {speciesAPI} from "../../api/SpeciesService";
 import LoadingAndErrorUtils from "../../common/loadingAndError/LoadingAndErrorUtils";
+import ButtonsSwitching from "../../common/ButtonsSwitching/ButtonsSwitching";
 
 const SpeciesContainer = () => {
 
@@ -25,8 +26,11 @@ const SpeciesContainer = () => {
 
             <LoadingAndErrorUtils error={error} isLoading={isLoading}/>
 
-            <button onClick={clickPrevPage} disabled={nextPage === minPage}>PREV</button>
-            <button onClick={clickNextPage} disabled={nextPage >= maxPage}>NEXT</button>
+            <ButtonsSwitching clickPrevPage={clickPrevPage}
+                              clickNextPage={clickNextPage}
+                              nextPage={nextPage}
+                              minPage={minPage}
+                              maxPage={maxPage}/>
 
             {species && species.results.map((species, index) => <SpeciesItem key={index} species={species}/>)}
 
