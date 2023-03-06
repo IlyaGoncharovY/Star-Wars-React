@@ -1,7 +1,7 @@
 import React from 'react';
 import {Modal} from 'react-bootstrap';
 import {BasicModal} from "../BasicModal";
-import {IPlanet} from "../../types/IPlanet";
+import {IPlanet} from "../../../types/IPlanet";
 
 interface PlanetModalType {
     open: boolean

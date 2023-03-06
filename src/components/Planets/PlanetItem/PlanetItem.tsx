@@ -1,6 +1,6 @@
 import React, {FC, useState} from 'react';
 import {IPlanet} from "../../../types/IPlanet";
-import PlanetModal from "../../../common/ModalWindow/PlanetModal";
+import PlanetModal from "../../../common/ModalWindow/PlanetModal/PlanetModal";
 
 interface PlanetItemType {
     planet: IPlanet
