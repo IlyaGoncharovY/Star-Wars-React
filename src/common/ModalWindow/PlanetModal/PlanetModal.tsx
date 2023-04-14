@@ -22,7 +22,7 @@ const PlanetModal: React.FC<PlanetModalType> = ({open, closeHandler, planet}) =>
                         <li> Rotation period: {planet.rotation_period}</li>
                         <li>Orbital period: {planet.orbital_period}</li>
                         <li>Gravity: {planet.gravity}</li>
-                        <li> Population: {planet.population}</li>
+                        <li>Population: {planet.population}</li>
                         <li>Climate: {planet.climate}</li>
                         <li>Terrain: {planet.terrain}</li>
                         <li>Surface water: {planet.surface_water}</li>
@@ -35,7 +35,5 @@ const PlanetModal: React.FC<PlanetModalType> = ({open, closeHandler, planet}) =>
             </Modal.Body>
         </BasicModal>
     );
-}
-    ;
-
-    export default PlanetModal;
+};
+export default PlanetModal;
