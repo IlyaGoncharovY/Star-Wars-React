@@ -1,6 +1,7 @@
-import React, {FC, useState} from 'react';
+import React, {FC} from 'react';
 import {IPlanet} from "../../../types/IPlanet";
 import PlanetModal from "../../../common/ModalWindow/PlanetModal/PlanetModal";
+import {useOpenModal} from "../../../common/hookForOpenModal/useOpenModal";
 
 interface PlanetItemType {
     planet: IPlanet
@@ -8,10 +9,7 @@ interface PlanetItemType {
 
 const PlanetItem: FC<PlanetItemType> = ({planet}) => {
 
-    let [openModal, setOpenModal] = useState<boolean>(false)
-
-    const openModalHandler = () => setOpenModal(true)
-    const closeModalHandler = () => setOpenModal(false)
+    const {openModal, openModalHandler, closeModalHandler} = useOpenModal()
 
     return (
         <div>
