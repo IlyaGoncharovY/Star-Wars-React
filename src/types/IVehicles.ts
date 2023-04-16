@@ -1,3 +1,6 @@
+import {IFilms} from "./IFilms";
+import {IPeople} from "./IPeople";
+
 export interface IVehicles {
 	name: string;
 	model: string;
@@ -10,8 +13,8 @@ export interface IVehicles {
 	cargo_capacity: string;
 	consumables: string;
 	vehicle_class: string;
-	pilots: any[];
-	films: string[];
+	pilots: IPeople[];
+	films: IFilms[];
 	created: string;
 	edited: string;
 	url: string;

@@ -1,3 +1,6 @@
+import {IPeople} from "./IPeople";
+import {IFilms} from "./IFilms";
+
 export interface ISpecies {
 	name: string;
 	classification: string;
@@ -9,8 +12,8 @@ export interface ISpecies {
 	average_lifespan: string;
 	homeworld: string;
 	language: string;
-	people: string[];
-	films: string[];
+	people: IPeople[];
+	films: IFilms[];
 	created: string;
 	edited: string;
 	url: string;
