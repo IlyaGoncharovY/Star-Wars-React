@@ -11,6 +11,7 @@ const NavigationBar = () => {
             <NavLink to={PATH.VEHICLES}>VEHICLES</NavLink>
             <NavLink to={PATH.SPECIES}>SPECIES</NavLink>
             <NavLink to={PATH.PLANETS}>PLANETS</NavLink>
+            <NavLink to={PATH.MAIN}>HOME</NavLink>
         </div>
     );
 };
