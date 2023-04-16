@@ -1,6 +1,6 @@
 import React, {FC} from 'react';
-import {ISpecies} from "../../types/ISpecies";
-import {BasicModal} from "./BasicModal";
+import {ISpecies} from "../../../types/ISpecies";
+import {BasicModal} from "../BasicModal";
 import {Modal} from "react-bootstrap";
 
 interface SpeciesModalType {
@@ -27,8 +27,16 @@ export const SpeciesModal: FC<SpeciesModalType> = ({open, closeHandler, species}
                         <li>Average lifespan: {species.average_lifespan}</li>
                         <li>Homeworld: {species.homeworld}</li>
                         <li>Language: {species.language}</li>
-                        <li>People: {species.people}</li>
-                        <li>Films: {species.films}</li>
+                        <li>People:
+                            <ul>
+                                <li>{species.people.length}</li>
+                            </ul>
+                        </li>
+                        <li>Films:
+                            <ul>
+                                <li>{species.films.length}</li>
+                            </ul>
+                        </li>
                         <li>Created: {species.created}</li>
                         <li>Edited: {species.edited}</li>
                     </ul>

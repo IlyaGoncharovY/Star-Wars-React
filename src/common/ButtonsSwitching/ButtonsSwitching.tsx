@@ -1,4 +1,5 @@
 import React, {FC} from 'react';
+import {Button} from "react-bootstrap";
 
 interface ButtonsSwitchingType {
     clickPrevPage: () => void
@@ -11,8 +12,8 @@ interface ButtonsSwitchingType {
 const ButtonsSwitching: FC<ButtonsSwitchingType> = ({clickPrevPage, clickNextPage, nextPage, minPage, maxPage}) => {
     return (
         <>
-            <button onClick={clickPrevPage} disabled={nextPage === minPage}>PREV</button>
-            <button onClick={clickNextPage} disabled={nextPage >= maxPage}>NEXT</button>
+            <Button onClick={clickPrevPage} disabled={nextPage === minPage}>PREV</Button>
+            <Button onClick={clickNextPage} disabled={nextPage >= maxPage}>NEXT</Button>
         </>
     );
 };

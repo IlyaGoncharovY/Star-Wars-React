@@ -26,8 +26,8 @@ const PlanetModal: React.FC<PlanetModalType> = ({open, closeHandler, planet}) =>
                         <li>Climate: {planet.climate}</li>
                         <li>Terrain: {planet.terrain}</li>
                         <li>Surface water: {planet.surface_water}</li>
-                        <li>Residents: {planet.residents}</li>
-                        <li>Films: {planet.films}</li>
+                        <li>Residents: {planet.residents.length}</li>
+                        <li>Films: {planet.films.length}</li>
                         <li>Created: {planet.created}</li>
                         <li>Edited: {planet.edited}</li>
                     </ul>

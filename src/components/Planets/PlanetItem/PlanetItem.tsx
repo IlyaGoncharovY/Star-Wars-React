@@ -2,6 +2,7 @@ import React, {FC} from 'react';
 import {IPlanet} from "../../../types/IPlanet";
 import PlanetModal from "../../../common/ModalWindow/PlanetModal/PlanetModal";
 import {useOpenModal} from "../../../common/hookForOpenModal/useOpenModal";
+import {Button} from "react-bootstrap";
 
 interface PlanetItemType {
     planet: IPlanet
@@ -14,7 +15,7 @@ const PlanetItem: FC<PlanetItemType> = ({planet}) => {
     return (
         <div>
             {planet.name}
-            <button onClick={openModalHandler}>Reed More</button>
+            <Button onClick={openModalHandler}>Reed More</Button>
             <PlanetModal
                 open={openModal}
                 closeHandler={closeModalHandler}
