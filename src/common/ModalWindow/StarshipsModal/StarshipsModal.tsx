@@ -8,12 +8,15 @@ interface StarshipsModalType {
     open: boolean
     closeHandler: () => void
     starships: IStarships
+    id: string
 }
 
-export const StarshipsModal: FC<StarshipsModalType> = ({open, closeHandler, starships}) => {
+export const StarshipsModal: FC<StarshipsModalType> = ({open, closeHandler,
+                                                           starships, id}) => {
 
-    const {data: peoples} = peopleAPI.useGetPeopleQuery(1)
-    console.log(starships.pilots)
+    // const {data: peoples} = peopleAPI.useGetPeopleQuery(1)
+    const {data: peoples} = peopleAPI.useGetPilotsQuery(id)
+
     return (
         <BasicModal open={open} closeHandler={closeHandler}>
             <Modal.Header>
@@ -36,7 +39,8 @@ export const StarshipsModal: FC<StarshipsModalType> = ({open, closeHandler, star
                         <li>Starship class: {starships.starship_class}</li>
                         <li>Pilots: {starships.pilots.length}</li>
                         <ul>
-                            <li>{peoples && peoples.results.map(el => el.name).join(", ")}</li>
+                                {peoples && peoples.name}
+                            {/*<li>{peoples && peoples.results.map(el => el.name).join(", ")}</li>*/}
                         </ul>
                         <li>Films: {starships.films.length}</li>
                         <li>Created: {starships.created}</li>
