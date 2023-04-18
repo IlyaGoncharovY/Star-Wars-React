@@ -1,5 +1,5 @@
 import {createApi, fetchBaseQuery} from "@reduxjs/toolkit/query/react";
-import {IPeople} from "../types/IPeople";
+import {IPeople, TestType} from "../types/IPeople";
 
 type BaseSWType<T = {}> = {
     count: number
@@ -20,6 +20,9 @@ export const peopleAPI = createApi({
                     page: page
                 }
             })
+        }),
+        getPilots: build.query<TestType, string>({
+            query: (id: string) => `people/${id}/`,
         })
     })
 })
