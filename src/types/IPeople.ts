@@ -22,3 +22,6 @@ export interface IPeople {
 	url: string;
 }
 
+export interface TestType {
+	name: string;
+}
