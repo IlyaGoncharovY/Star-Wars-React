@@ -1,6 +1,3 @@
-import {IPeople} from "./IPeople";
-import {IFilms} from "./IFilms";
-
 export interface IStarships {
 	name: string;
 	model: string;
@@ -15,8 +12,10 @@ export interface IStarships {
 	hyperdrive_rating: string;
 	MGLT: string;
 	starship_class: string;
-	pilots: IPeople[];
-	films: IFilms[];
+	// pilots: IPeople[];
+	pilots: string[];
+	// films: IFilms[];
+	films: string[];
 	created: string;
 	edited: string;
 	url: string;

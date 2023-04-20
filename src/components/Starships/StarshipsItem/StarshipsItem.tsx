@@ -21,7 +21,6 @@ const StarshipsItem: FC<StarshipsItemType> = ({starships}) => {
                 open={openModal}
                 closeHandler={closeModalHandler}
                 starships={starships}
-                id={"13"}
             />
         </div>
     );

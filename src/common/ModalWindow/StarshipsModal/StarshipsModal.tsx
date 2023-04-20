@@ -1,21 +1,45 @@
-import React, {FC} from 'react';
+import React, {FC, useEffect, useState} from 'react';
 import {IStarships} from "../../../types/IStarships";
 import {BasicModal} from "../BasicModal";
 import {Modal} from "react-bootstrap";
-import {peopleAPI} from "../../../api/PeopleService";
 
 interface StarshipsModalType {
     open: boolean
     closeHandler: () => void
     starships: IStarships
-    id: string
 }
 
-export const StarshipsModal: FC<StarshipsModalType> = ({open, closeHandler,
-                                                           starships, id}) => {
+export const StarshipsModal: FC<StarshipsModalType> = ({
+                                                           open, closeHandler,
+                                                           starships
+                                                       }) => {
 
-    // const {data: peoples} = peopleAPI.useGetPeopleQuery(1)
-    const {data: peoples} = peopleAPI.useGetPilotsQuery(id)
+    const [pilotNames, setPilotNames] = useState<string[]>([]);
+    const [films, setFilms] = useState<string[]>([])
+
+    useEffect(() => {
+        const fetchFilms = async () => {
+            const films: string[] = [];
+            for (const url of starships.films) {
+                const response = await fetch(url);
+                const data = await response.json();
+                films.push(data.title);
+            }
+            setFilms(films);
+        };
+        fetchFilms();
+
+        const fetchPilotNames = async () => {
+            const names: string[] = [];
+            for (const url of starships.pilots) {
+                const response = await fetch(url);
+                const data = await response.json();
+                names.push(data.name);
+            }
+            setPilotNames(names);
+        };
+        fetchPilotNames();
+    }, [starships.pilots, starships.films]);
 
     return (
         <BasicModal open={open} closeHandler={closeHandler}>
@@ -37,12 +61,14 @@ export const StarshipsModal: FC<StarshipsModalType> = ({open, closeHandler,
                         <li>Hyperdrive rating: {starships.hyperdrive_rating}</li>
                         <li>MGLT: {starships.MGLT}</li>
                         <li>Starship class: {starships.starship_class}</li>
-                        <li>Pilots: {starships.pilots.length}</li>
+                            {pilotNames.length ? <li>Pilots:</li> : ""}
                         <ul>
-                                {peoples && peoples.name}
-                            {/*<li>{peoples && peoples.results.map(el => el.name).join(", ")}</li>*/}
+                            {pilotNames.map((pilot, index) => <li key={index}>{pilot}</li>)}
                         </ul>
-                        <li>Films: {starships.films.length}</li>
+                        <li>Films:</li>
+                        <ul>
+                            {films.map((film, index) => <li key={index}>{film}</li>)}
+                        </ul>
                         <li>Created: {starships.created}</li>
                         <li>Edited: {starships.edited}</li>
                     </ul>
