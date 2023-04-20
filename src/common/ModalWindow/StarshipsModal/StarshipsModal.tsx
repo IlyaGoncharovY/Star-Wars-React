@@ -1,7 +1,8 @@
-import React, {FC, useEffect, useState} from 'react';
+import React, {FC} from 'react';
 import {IStarships} from "../../../types/IStarships";
 import {BasicModal} from "../BasicModal";
 import {Modal} from "react-bootstrap";
+import {useStarships} from "../../../Utils/hooks/useStarships";
 
 interface StarshipsModalType {
     open: boolean
@@ -14,32 +15,7 @@ export const StarshipsModal: FC<StarshipsModalType> = ({
                                                            starships
                                                        }) => {
 
-    const [pilotNames, setPilotNames] = useState<string[]>([]);
-    const [films, setFilms] = useState<string[]>([])
-
-    useEffect(() => {
-        const fetchFilms = async () => {
-            const films: string[] = [];
-            for (const url of starships.films) {
-                const response = await fetch(url);
-                const data = await response.json();
-                films.push(data.title);
-            }
-            setFilms(films);
-        };
-        fetchFilms();
-
-        const fetchPilotNames = async () => {
-            const names: string[] = [];
-            for (const url of starships.pilots) {
-                const response = await fetch(url);
-                const data = await response.json();
-                names.push(data.name);
-            }
-            setPilotNames(names);
-        };
-        fetchPilotNames();
-    }, [starships.pilots, starships.films]);
+    const {pilotNames, films} = useStarships(starships)
 
     return (
         <BasicModal open={open} closeHandler={closeHandler}>
