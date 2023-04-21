@@ -5,7 +5,7 @@ import {IVehicles} from "../../types/IVehicles";
 type DataApiType = IStarships | IVehicles
 
 export const usePilotsAndFilms = (data: DataApiType) => {
-
+// starships | vehicles
     const [pilotNames, setPilotNames] = useState<string[]>([]);
     const [films, setFilms] = useState<string[]>([])
 
