@@ -14,6 +14,8 @@ export const VehiclesModal: FC<VehiclesModalType> = ({open, closeHandler, vehicl
 
     const {pilotNames, films} = usePilotsAndFilms(vehicles)
 
+    const vehiclesArray = Object.entries(vehicles)
+
     return (
             <BasicModal open={open} closeHandler={closeHandler}>
                 <Modal.Header>
@@ -22,24 +24,19 @@ export const VehiclesModal: FC<VehiclesModalType> = ({open, closeHandler, vehicl
                 <Modal.Body>
                     <div>
                         <ul>
-                            <li>Model: {vehicles.model}</li>
-                            <li>Manufacturer: {vehicles.manufacturer}</li>
-                            <li>Cost in credits: {vehicles.cost_in_credits}</li>
-                            <li>Crew: {vehicles.crew}</li>
-                            <li>Passengers: {vehicles.passengers}</li>
-                            <li>Cargo capacity: {vehicles.cargo_capacity}</li>
-                            <li>Consumables: {vehicles.consumables}</li>
-                            <li>Vehicle class: {vehicles.vehicle_class}</li>
-                            {pilotNames.length ? <li>Pilots:</li> : ""}
+                            {vehiclesArray.map(([key, value]) => {
+                                if (key === "films" || key === "pilots" || key === "url") return null;
+                                return  <li key={key}>{key} : {value}</li>
+                            })}
+
+                            {pilotNames.length ? <li>pilots:</li> : ""}
                             <ul>
                                 {pilotNames.map((pilot, index) => <li key={index}>{pilot}</li>)}
                             </ul>
-                            <li>Films:</li>
+                            <li>films:</li>
                             <ul>
                                 {films.map((film, index) => <li key={index}>{film}</li>)}
                             </ul>
-                            <li>Created: {vehicles.created}</li>
-                            <li>Edited: {vehicles.edited}</li>
                         </ul>
                     </div>
                 </Modal.Body>
