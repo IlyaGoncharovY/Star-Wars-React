@@ -2,7 +2,7 @@ import React, {FC} from 'react';
 import {IStarships} from "../../../types/IStarships";
 import {BasicModal} from "../BasicModal";
 import {Modal} from "react-bootstrap";
-import {useStarships} from "../../../Utils/hooks/useStarships";
+import {usePilotsAndFilms} from "../../../Utils/hooks/usePilotsAndFilms";
 
 interface StarshipsModalType {
     open: boolean
@@ -15,7 +15,7 @@ export const StarshipsModal: FC<StarshipsModalType> = ({
                                                            starships
                                                        }) => {
 
-    const {pilotNames, films} = useStarships(starships)
+    const {pilotNames, films} = usePilotsAndFilms(starships)
 
     return (
         <BasicModal open={open} closeHandler={closeHandler}>
