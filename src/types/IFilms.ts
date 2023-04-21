@@ -1,9 +1,3 @@
-import {IPlanet} from "./IPlanet";
-import {IStarships} from "./IStarships";
-import {IVehicles} from "./IVehicles";
-import {ISpecies} from "./ISpecies";
-import {IPeople} from "./IPeople";
-
 export interface IFilms {
 	title: string;
 	episode_id: number;
@@ -11,11 +5,16 @@ export interface IFilms {
 	director: string;
 	producer: string;
 	release_date: string;
-	characters: IPeople[];
-	planets: IPlanet[];
-	starships: IStarships[];
-	vehicles: IVehicles[];
-	species: ISpecies[];
+	// characters: IPeople[];
+	characters: string[];
+	// planets: IPlanet[];
+	planets: string[];
+	// starships: IStarships[];
+	starships: string[];
+	// vehicles: IVehicles[];
+	vehicles: string[];
+	// species: ISpecies[];
+	species: string[];
 	created: string;
 	edited: string;
 	url: string;

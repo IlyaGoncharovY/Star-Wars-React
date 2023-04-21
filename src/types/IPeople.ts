@@ -1,8 +1,3 @@
-import {IFilms} from "./IFilms";
-import {ISpecies} from "./ISpecies";
-import {IVehicles} from "./IVehicles";
-import {IStarships} from "./IStarships";
-
 export interface IPeople {
 	name: string;
 	height: string;
@@ -13,10 +8,14 @@ export interface IPeople {
 	birth_year: string;
 	gender: string;
 	homeworld: string;
-	films: IFilms[];
-	species: ISpecies[];
-	vehicles: IVehicles[];
-	starships: IStarships[];
+	// films: IFilms[];
+	films: string[];
+	// species: ISpecies[];
+	species: string[];
+	// vehicles: IVehicles[];
+	vehicles: string[];
+	// starships: IStarships[];
+	starships: string[];
 	created: string;
 	edited: string;
 	url: string;
