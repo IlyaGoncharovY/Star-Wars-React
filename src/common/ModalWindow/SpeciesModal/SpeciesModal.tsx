@@ -2,6 +2,7 @@ import React, {FC} from 'react';
 import {ISpecies} from "../../../types/ISpecies";
 import {BasicModal} from "../BasicModal";
 import {Modal} from "react-bootstrap";
+import {usePeopleAndFilms} from "../../../Utils/hooks/usePeopleAndFilms";
 
 interface SpeciesModalType {
     open: boolean
@@ -10,6 +11,11 @@ interface SpeciesModalType {
 }
 
 export const SpeciesModal: FC<SpeciesModalType> = ({open, closeHandler, species}) => {
+
+    const {peopleNames, films} = usePeopleAndFilms(species)
+
+    const speciesArray = Object.entries(species)
+
     return (
         <BasicModal open={open} closeHandler={closeHandler}>
             <Modal.Header>
@@ -18,27 +24,25 @@ export const SpeciesModal: FC<SpeciesModalType> = ({open, closeHandler, species}
             <Modal.Body>
                 <div>
                     <ul>
-                        <li>Classification: {species.classification}</li>
-                        <li>Designation: {species.designation}</li>
-                        <li>Average height: {species.average_height}</li>
-                        <li>Skin colors: {species.skin_colors}</li>
-                        <li>Hair colors: {species.hair_colors}</li>
-                        <li>Eye colors: {species.eye_colors}</li>
-                        <li>Average lifespan: {species.average_lifespan}</li>
-                        <li>Homeworld: {species.homeworld}</li>
-                        <li>Language: {species.language}</li>
-                        <li>People:
+                        {speciesArray.map(([key, value]) => {
+                            if (key === "people" || key === "films" || key === "url") return null;
+                            return <li key={key}>{key} : {value}</li>
+                        })}
+                        <li>people:
                             <ul>
-                                <li>{species.people.length}</li>
+                                {peopleNames.map((people, index) =>
+                                    <li key={index}>{people}</li>
+                                )}
                             </ul>
                         </li>
-                        <li>Films:
+                        <li>films:
                             <ul>
+                                {films.map((film, index) =>
+                                    <li key={index}>{films}</li>
+                                )}
                                 <li>{species.films.length}</li>
                             </ul>
                         </li>
-                        <li>Created: {species.created}</li>
-                        <li>Edited: {species.edited}</li>
                     </ul>
                 </div>
             </Modal.Body>
