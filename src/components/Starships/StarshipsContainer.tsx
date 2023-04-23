@@ -1,9 +1,9 @@
 import React from 'react';
-import {starshipsAPI} from "../../api/StarshipsService";
 import StarshipsItem from "./StarshipsItem/StarshipsItem";
 import LoadingAndErrorUtils from "../../common/loadingAndError/LoadingAndErrorUtils";
 import ButtonsSwitching from "../../common/ButtonsSwitching/ButtonsSwitching";
 import {useNextPage} from "../../common/hookForChangePage/useNextPage";
+import {swAPI} from "../../api/GetSWApiService";
 
 const StarshipsContainer = () => {
 
@@ -13,7 +13,7 @@ const StarshipsContainer = () => {
     let minPage = 1
 
 
-    const {data: starships, error, isLoading} = starshipsAPI.useGetStarshipsQuery(nextPage)
+    const {data: starships, error, isLoading} = swAPI.useGetStarshipsQuery(nextPage)
 
     return (
         <div>

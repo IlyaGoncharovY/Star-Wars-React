@@ -1,9 +1,9 @@
 import React from 'react';
 import SpeciesItem from "./SpeciesItem/SpeciesItem";
-import {speciesAPI} from "../../api/SpeciesService";
 import LoadingAndErrorUtils from "../../common/loadingAndError/LoadingAndErrorUtils";
 import ButtonsSwitching from "../../common/ButtonsSwitching/ButtonsSwitching";
 import {useNextPage} from "../../common/hookForChangePage/useNextPage";
+import {swAPI} from "../../api/GetSWApiService";
 
 const SpeciesContainer = () => {
 
@@ -12,7 +12,7 @@ const SpeciesContainer = () => {
     let maxPage = 4
     let minPage = 1
 
-    const {data: species, error, isLoading} = speciesAPI.useGetSpeciesQuery(nextPage)
+    const {data: species, error, isLoading} = swAPI.useGetSpeciesQuery(nextPage)
 
     return (
         <div>

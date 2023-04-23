@@ -1,9 +1,9 @@
 import React from 'react';
-import {planetAPI} from "../../api/PlanetService";
 import PlanetItem from "./PlanetItem/PlanetItem";
 import LoadingAndErrorUtils from "../../common/loadingAndError/LoadingAndErrorUtils";
 import ButtonsSwitching from "../../common/ButtonsSwitching/ButtonsSwitching";
 import {useNextPage} from "../../common/hookForChangePage/useNextPage";
+import {swAPI} from "../../api/GetSWApiService";
 
 
 const PlanetsContainer = () => {
@@ -13,7 +13,7 @@ const PlanetsContainer = () => {
     let maxPage = 7
     let minPage = 1
 
-    const {data: planets, error, isLoading} = planetAPI.useGetPlanetQuery(nextPage)
+    const {data: planets, error, isLoading} = swAPI.useGetPlanetQuery(nextPage)
 
     return (
         <div>

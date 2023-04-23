@@ -1,12 +1,12 @@
 import React from 'react';
 import {FilmItem} from "./FilmsItem/FilmItem";
-import {filmsAPI} from "../../api/FilmsService";
 import LoadingAndErrorUtils from "../../common/loadingAndError/LoadingAndErrorUtils";
+import {swAPI} from "../../api/GetSWApiService";
 
 
 export const FilmsContainer = () => {
 
-    const {data: films, error, isLoading} = filmsAPI.useGetFilmsQuery("")
+    const {data: films, error, isLoading} = swAPI.useGetFilmsQuery("")
 
     return (
         <div>
