@@ -1,30 +1,15 @@
 import {Action, combineReducers, configureStore, ThunkAction} from '@reduxjs/toolkit';
-import {planetAPI} from "../api/PlanetService";
 import {setupListeners} from "@reduxjs/toolkit/query";
-import {peopleAPI} from "../api/PeopleService";
-import {filmsAPI} from "../api/FilmsService";
-import {starshipsAPI} from "../api/StarshipsService";
-import {vehiclesAPI} from "../api/VehiclesService";
-import {speciesAPI} from "../api/SpeciesService";
+import {swAPI} from "../api/GetSWApiService";
 
 const rootReducer = combineReducers({
-    [planetAPI.reducerPath]: planetAPI.reducer,
-    [peopleAPI.reducerPath]: peopleAPI.reducer,
-    [filmsAPI.reducerPath]: filmsAPI.reducer,
-    [starshipsAPI.reducerPath]: starshipsAPI.reducer,
-    [vehiclesAPI.reducerPath]: vehiclesAPI.reducer,
-    [speciesAPI.reducerPath]: speciesAPI.reducer,
+    [swAPI.reducerPath]: swAPI.reducer,
 })
 
 export const store = configureStore({
     reducer: rootReducer,
     middleware: (getDefaultMiddleware) =>
-        getDefaultMiddleware().concat(planetAPI.middleware,
-            peopleAPI.middleware,
-            filmsAPI.middleware,
-            starshipsAPI.middleware,
-            vehiclesAPI.middleware,
-            speciesAPI.middleware,)
+        getDefaultMiddleware().concat(swAPI.middleware)
 });
 
 export type AppDispatch = typeof store.dispatch;
