@@ -2,6 +2,7 @@ import React from 'react';
 import {Modal} from 'react-bootstrap';
 import {BasicModal} from "../BasicModal";
 import {IPlanet} from "../../../types/IPlanet";
+import {useResidentAndFilms} from "../../../Utils/hooks/useResidentAndFilms";
 
 interface PlanetModalType {
     open: boolean
@@ -10,6 +11,11 @@ interface PlanetModalType {
 }
 
 const PlanetModal: React.FC<PlanetModalType> = ({open, closeHandler, planet}) => {
+
+    const {residentNames, films} = useResidentAndFilms(planet)
+
+    const planetsArray = Object.entries(planet)
+
     return (
         <BasicModal open={open} closeHandler={closeHandler}>
             <Modal.Header>
@@ -18,18 +24,22 @@ const PlanetModal: React.FC<PlanetModalType> = ({open, closeHandler, planet}) =>
             <Modal.Body>
                 <div>
                     <ul>
-                        <li>Diameter: {planet.diameter}</li>
-                        <li> Rotation period: {planet.rotation_period}</li>
-                        <li>Orbital period: {planet.orbital_period}</li>
-                        <li>Gravity: {planet.gravity}</li>
-                        <li>Population: {planet.population}</li>
-                        <li>Climate: {planet.climate}</li>
-                        <li>Terrain: {planet.terrain}</li>
-                        <li>Surface water: {planet.surface_water}</li>
-                        <li>Residents: {planet.residents.length}</li>
-                        <li>Films: {planet.films.length}</li>
-                        <li>Created: {planet.created}</li>
-                        <li>Edited: {planet.edited}</li>
+                        {planetsArray.map(([key, value]) => {
+                            if (key === "residents" || key === "films" || key === "url") return null
+                            return <li>{key}: {value}</li>
+                        })}
+                        {residentNames.length ? <li>residents: </li> : ""}
+                        <ul>
+                            {residentNames.map((resident, index) =>
+                                <li key={index}>{resident}</li>
+                            )}
+                        </ul>
+                        <li>films: </li>
+                        <ul>
+                            {films.map((film, index) =>
+                                <li key={index}>{film}</li>
+                            )}
+                        </ul>
                     </ul>
                 </div>
             </Modal.Body>
