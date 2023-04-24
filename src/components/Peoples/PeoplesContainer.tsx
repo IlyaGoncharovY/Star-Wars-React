@@ -12,7 +12,7 @@ const PeoplesContainer = () => {
     let maxPage = 9
     let minPage = 1
 
-    const {data: peoples, error, isLoading} = swAPI.useGetPeopleQuery(nextPage)
+    const {data: peoples, error, isLoading} = swAPI.useGetPeoplesQuery(nextPage)
 
     return (
         <div>

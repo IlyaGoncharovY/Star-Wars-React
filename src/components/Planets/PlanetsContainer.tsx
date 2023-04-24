@@ -13,7 +13,7 @@ const PlanetsContainer = () => {
     let maxPage = 7
     let minPage = 1
 
-    const {data: planets, error, isLoading} = swAPI.useGetPlanetQuery(nextPage)
+    const {data: planets, error, isLoading} = swAPI.useGetPlanetsQuery(nextPage)
 
     return (
         <div>
