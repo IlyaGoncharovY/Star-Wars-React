@@ -23,7 +23,7 @@ export const swAPI = createApi({
                 url: `films/`
             })
         }),
-        getPeople: build.query<BaseSWType<IPeople[]>, number>({
+        getPeoples: build.query<BaseSWType<IPeople[]>, number>({
             query: (page) => ({
                 url: `people/`,
                 params: {
@@ -31,13 +31,16 @@ export const swAPI = createApi({
                 }
             })
         }),
-        getPlanet: build.query<BaseSWType<IPlanet[]>, number>({
+        getPlanets: build.query<BaseSWType<IPlanet[]>, number>({
             query: (page) => ({
                 url: `planets/`,
                 params: {
                     page: page
                 }
             })
+        }),
+        getHomeworld: build.query({
+            query: (url) => url.replace(/^http:/, 'https:'),
         }),
         getSpecies: build.query<BaseSWType<ISpecies[]>, number>({
             query: (page) => ({
