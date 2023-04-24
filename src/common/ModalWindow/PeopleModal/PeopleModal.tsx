@@ -8,21 +8,21 @@ import {swAPI} from "../../../api/GetSWApiService";
 interface PeopleModalType {
     open: boolean
     closeHandler: () => void
-    people: IPeople
+    people: IPeople | undefined
 }
 
 export const PeopleModal: FC<PeopleModalType> = ({open, closeHandler, people}) => {
 
-    const {films, species, vehicles, starships} = useDataForPeoples(people)
+    const {films, species, vehicles, starships} = useDataForPeoples(people!)
 
     const {data: homeworld} = swAPI.useGetHomeworldQuery(people?.homeworld)
 
-    const peopleArray = Object.entries(people)
+    const peopleArray = Object.entries(people!)
 
     return (
         <BasicModal open={open} closeHandler={closeHandler}>
             <Modal.Header>
-                <Modal.Title>{people.name}</Modal.Title>
+                <Modal.Title>{people?.name}</Modal.Title>
             </Modal.Header>
             <Modal.Body>
                 <div>

@@ -7,7 +7,7 @@ import {usePilotsAndFilms} from "../../../Utils/hooks/usePilotsAndFilms";
 interface StarshipsModalType {
     open: boolean
     closeHandler: () => void
-    starships: IStarships
+    starships: IStarships | undefined
 }
 
 export const StarshipsModal: FC<StarshipsModalType> = ({
@@ -15,14 +15,14 @@ export const StarshipsModal: FC<StarshipsModalType> = ({
                                                            starships
                                                        }) => {
 
-    const {pilotNames, films} = usePilotsAndFilms(starships)
+    const {pilotNames, films} = usePilotsAndFilms(starships!)
 
-    const starshipsArray = Object.entries(starships)
+    const starshipsArray = Object.entries(starships!)
 
     return (
         <BasicModal open={open} closeHandler={closeHandler}>
             <Modal.Header>
-                <Modal.Title>{starships.name}</Modal.Title>
+                <Modal.Title>{starships!.name}</Modal.Title>
             </Modal.Header>
             <Modal.Body>
                 <div>

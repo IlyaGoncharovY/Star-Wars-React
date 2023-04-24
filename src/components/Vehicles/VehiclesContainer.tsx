@@ -1,9 +1,9 @@
 import React from 'react';
-import VehiclesItem from "./VehiclisItem/VehiclesItem";
 import LoadingAndErrorUtils from "../../common/loadingAndError/LoadingAndErrorUtils";
 import ButtonsSwitching from "../../common/ButtonsSwitching/ButtonsSwitching";
 import {useNextPage} from "../../common/hookForChangePage/useNextPage";
 import {swAPI} from "../../api/GetSWApiService";
+import {ItemCommonForApp} from "../../common/ItemCommon/ItemCommonForApp";
 
 const VehiclesContainer = () => {
 
@@ -27,7 +27,7 @@ const VehiclesContainer = () => {
                               maxPage={maxPage}/>
 
 
-            {vehicles && vehicles.results.map((vehicles, index) => <VehiclesItem key={index} vehicles={vehicles}/>)}
+            {vehicles && vehicles.results.map((vehicles, index) => <ItemCommonForApp key={index} vehicles={vehicles} type={"vehicles"}/>)}
 
         </div>
     );

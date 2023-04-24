@@ -1,9 +1,9 @@
 import React from 'react';
-import PlanetItem from "./PlanetItem/PlanetItem";
 import LoadingAndErrorUtils from "../../common/loadingAndError/LoadingAndErrorUtils";
 import ButtonsSwitching from "../../common/ButtonsSwitching/ButtonsSwitching";
 import {useNextPage} from "../../common/hookForChangePage/useNextPage";
 import {swAPI} from "../../api/GetSWApiService";
+import {ItemCommonForApp} from "../../common/ItemCommon/ItemCommonForApp";
 
 
 const PlanetsContainer = () => {
@@ -26,7 +26,7 @@ const PlanetsContainer = () => {
                               minPage={minPage}
                               maxPage={maxPage}/>
 
-            {planets && planets.results.map((planet, index) => <PlanetItem key={index} planet={planet}/>)}
+            {planets && planets.results.map((planet, index) => <ItemCommonForApp key={index} planet={planet} type={"planet"}/>)}
 
         </div>
     );

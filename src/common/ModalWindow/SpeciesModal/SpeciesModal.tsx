@@ -7,19 +7,19 @@ import {usePeopleAndFilms} from "../../../Utils/hooks/usePeopleAndFilms";
 interface SpeciesModalType {
     open: boolean
     closeHandler: () => void
-    species: ISpecies
+    species: ISpecies | undefined
 }
 
 export const SpeciesModal: FC<SpeciesModalType> = ({open, closeHandler, species}) => {
 
-    const {peopleNames, films} = usePeopleAndFilms(species)
+    const {peopleNames, films} = usePeopleAndFilms(species!)
 
-    const speciesArray = Object.entries(species)
+    const speciesArray = Object.entries(species!)
 
     return (
         <BasicModal open={open} closeHandler={closeHandler}>
             <Modal.Header>
-                <Modal.Title>{species.name}</Modal.Title>
+                <Modal.Title>{species!.name}</Modal.Title>
             </Modal.Header>
             <Modal.Body>
                 <div>
@@ -40,7 +40,7 @@ export const SpeciesModal: FC<SpeciesModalType> = ({open, closeHandler, species}
                                 {films.map((film, index) =>
                                     <li key={index}>{films}</li>
                                 )}
-                                <li>{species.films.length}</li>
+                                <li>{species!.films.length}</li>
                             </ul>
                         </li>
                     </ul>

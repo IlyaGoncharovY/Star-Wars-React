@@ -1,9 +1,9 @@
 import React from 'react';
-import StarshipsItem from "./StarshipsItem/StarshipsItem";
 import LoadingAndErrorUtils from "../../common/loadingAndError/LoadingAndErrorUtils";
 import ButtonsSwitching from "../../common/ButtonsSwitching/ButtonsSwitching";
 import {useNextPage} from "../../common/hookForChangePage/useNextPage";
 import {swAPI} from "../../api/GetSWApiService";
+import {ItemCommonForApp} from "../../common/ItemCommon/ItemCommonForApp";
 
 const StarshipsContainer = () => {
 
@@ -26,7 +26,7 @@ const StarshipsContainer = () => {
                               maxPage={maxPage}/>
 
             {starships && starships.results.map((starships, index) =>
-                <StarshipsItem key={index} starships={starships}/>)}
+                <ItemCommonForApp key={index} starships={starships} type={"starships"}/>)}
         </div>
     );
 };

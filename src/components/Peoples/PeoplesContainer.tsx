@@ -1,9 +1,9 @@
 import React from 'react';
-import PeopleItem from "./PeopleItem/PeopleItem";
 import LoadingAndErrorUtils from "../../common/loadingAndError/LoadingAndErrorUtils";
 import ButtonsSwitching from "../../common/ButtonsSwitching/ButtonsSwitching";
 import {useNextPage} from "../../common/hookForChangePage/useNextPage";
 import {swAPI} from "../../api/GetSWApiService";
+import {ItemCommonForApp} from "../../common/ItemCommon/ItemCommonForApp";
 
 const PeoplesContainer = () => {
 
@@ -25,7 +25,7 @@ const PeoplesContainer = () => {
                               maxPage={maxPage}/>
 
             {peoples && peoples.results.map((people, index) =>
-                <PeopleItem key={index} people={people}/>)}
+                <ItemCommonForApp key={index} people={people} type={"people"}/>)}
         </div>
     );
 };

@@ -1,9 +1,9 @@
 import React from 'react';
-import SpeciesItem from "./SpeciesItem/SpeciesItem";
 import LoadingAndErrorUtils from "../../common/loadingAndError/LoadingAndErrorUtils";
 import ButtonsSwitching from "../../common/ButtonsSwitching/ButtonsSwitching";
 import {useNextPage} from "../../common/hookForChangePage/useNextPage";
 import {swAPI} from "../../api/GetSWApiService";
+import {ItemCommonForApp} from "../../common/ItemCommon/ItemCommonForApp";
 
 const SpeciesContainer = () => {
 
@@ -25,7 +25,7 @@ const SpeciesContainer = () => {
                               minPage={minPage}
                               maxPage={maxPage}/>
 
-            {species && species.results.map((species, index) => <SpeciesItem key={index} species={species}/>)}
+            {species && species.results.map((species, index) => <ItemCommonForApp key={index} species={species} type={"species"}/>)}
 
         </div>
     );

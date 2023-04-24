@@ -7,19 +7,19 @@ import {usePilotsAndFilms} from "../../../Utils/hooks/usePilotsAndFilms";
 interface VehiclesModalType {
     open: boolean
     closeHandler: () => void
-    vehicles: IVehicles
+    vehicles: IVehicles | undefined
 }
 
 export const VehiclesModal: FC<VehiclesModalType> = ({open, closeHandler, vehicles}) => {
 
-    const {pilotNames, films} = usePilotsAndFilms(vehicles)
+    const {pilotNames, films} = usePilotsAndFilms(vehicles!)
 
-    const vehiclesArray = Object.entries(vehicles)
+    const vehiclesArray = Object.entries(vehicles!)
 
     return (
             <BasicModal open={open} closeHandler={closeHandler}>
                 <Modal.Header>
-                    <Modal.Title>{vehicles.name}</Modal.Title>
+                    <Modal.Title>{vehicles!.name}</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
                     <div>

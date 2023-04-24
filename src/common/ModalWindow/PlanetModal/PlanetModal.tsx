@@ -7,19 +7,19 @@ import {useResidentAndFilms} from "../../../Utils/hooks/useResidentAndFilms";
 interface PlanetModalType {
     open: boolean
     closeHandler: () => void
-    planet: IPlanet
+    planet: IPlanet | undefined
 }
 
 const PlanetModal: React.FC<PlanetModalType> = ({open, closeHandler, planet}) => {
 
-    const {residentNames, films} = useResidentAndFilms(planet)
+    const {residentNames, films} = useResidentAndFilms(planet!)
 
-    const planetsArray = Object.entries(planet)
+    const planetsArray = Object.entries(planet!)
 
     return (
         <BasicModal open={open} closeHandler={closeHandler}>
             <Modal.Header>
-                <Modal.Title>{planet.name}</Modal.Title>
+                <Modal.Title>{planet!.name}</Modal.Title>
             </Modal.Header>
             <Modal.Body>
                 <div>
